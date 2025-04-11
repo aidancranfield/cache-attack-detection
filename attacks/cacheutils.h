@@ -1,10 +1,28 @@
 #ifndef CACHEUTILS_H
 #define CACHEUTILS_H
 
+// Guard for optional min/max macros
 #ifndef HIDEMINMAX
 #define MAX(X,Y) (((X) > (Y)) ? (X) : (Y))
 #define MIN(X,Y) (((X) < (Y)) ? (X) : (Y))
 #endif
+
+// Eviction buffer + function
+#ifndef CACHEUTILS_EVICT
+#define CACHEUTILS_EVICT
+
+void maccess(void* p);
+
+#define EVICT_BUFFER_SIZE (4 * 1024 * 1024)
+char __attribute__((aligned(4096))) evict_buffer[EVICT_BUFFER_SIZE];
+
+static inline void evict(void *addr) {
+  for (int i = 0; i < 4096; i += 64) {
+    maccess(evict_buffer + i);
+  }
+}
+
+#endif // CACHEUTILS_EVICT
 
 uint64_t rdtsc_nofence() {
   uint64_t a, d;
