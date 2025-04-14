@@ -22,11 +22,12 @@ void evictandreload(void* addr)
   maccess(addr);
   size_t delta = rdtsc_end() - time;
   evict(addr);
-  if (delta < 200)
+  if (delta < 100)
   {
     if (kpause > 1000)
     {
-      printf("Cache Hit %10lu after %10lu cycles, t=%10lu us\n", delta, kpause, (time-start)/2600);
+      printf("CACHE HIT - Δ = %-4lu cycles | idle = %-5lu loops | t = %6lu µs\n", delta, kpause, ((time - start) / 2600));
+ 
       keystate = (keystate+1) % 2;
     }
     kpause = 0;
@@ -49,6 +50,7 @@ int main(int argc, char** argv)
   unsigned char* addr = (unsigned char*)mmap(0, 64*1024*1024, PROT_READ, MAP_SHARED, fd, 0);
   if (addr == (void*)-1)
     return 3;
+  printf("Monitoring %s + 0x%x\n", name, offset);
   start = rdtsc();
   while(1)
   {
