@@ -22,7 +22,7 @@ void evictandreload(void* addr)
   maccess(addr);
   size_t delta = rdtsc_end() - time;
   evict(addr);
-  if (delta < 200)
+  if (delta < 100)
   {
     if (kpause > 1000)
     {
