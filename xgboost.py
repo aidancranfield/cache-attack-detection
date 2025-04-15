@@ -35,7 +35,7 @@ y_pred = model.predict(X_test)
 
 print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
-print("Confusion Matrix:\n", confusion_matrix(y_vtest, y_pred))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
 # Feature Importance Plot
 xgb.plot_importance(model, max_num_features=10, title="Top 10 Feature Importances")
