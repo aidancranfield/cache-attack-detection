@@ -7,15 +7,16 @@ import random
 from itertools import product
 
 # === CONFIGURATION ===
-TOTAL_SAMPLES = 216 * 1   # where N = samples per attack combo
+TOTAL_SAMPLES = 288 * 8   # where N = samples per attack combo
 SAMPLE_DURATION = 5
 COOLDOWN_TIME = 2
-OUTPUT_CSV = "dataset.csv"
+OUTPUT_CSV = "test.csv"
 
 ATTACKS = {
     "fr": "./attacks/fr/fr",
     "pp": "./attacks/pp/pp",
-    "ff": "./attacks/ff/ff"
+    "ff": "./attacks/ff/ff",
+    "er": "./attackd/er/er"
 }
 
 TARGET_OFFSETS = {
