@@ -10,13 +10,13 @@ from itertools import product
 TOTAL_SAMPLES = 288 * 8   # where N = samples per attack combo
 SAMPLE_DURATION = 5
 COOLDOWN_TIME = 2
-OUTPUT_CSV = "test.csv"
+OUTPUT_CSV = "full_dataset.csv"
 
 ATTACKS = {
     "fr": "./attacks/fr/fr",
     "pp": "./attacks/pp/pp",
     "ff": "./attacks/ff/ff",
-    "er": "./attackd/er/er"
+    "er": "./attacks/er/er"
 }
 
 TARGET_OFFSETS = {
