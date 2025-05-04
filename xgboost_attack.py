@@ -71,10 +71,6 @@ for attack in attack_types:
     for feature, score in importance_sorted.items():
         print(f"{feature}: {score:.4f}")
 
-    MODEL_PATH = "model.json"
-    model.save_model(MODEL_PATH)
-    print(f"Model saved to {MODEL_PATH}")
-
     # Plot all features
     xgb.plot_importance(model, max_num_features=len(importance), title=f"All Feature Importances ({attack})", importance_type='gain')
     plt.tight_layout()

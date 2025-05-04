@@ -47,3 +47,8 @@ for feature, score in importance_sorted.items():
 xgb.plot_importance(model, max_num_features=len(importance), title=f"All Feature Importances", importance_type='gain')
 plt.tight_layout()
 plt.show()
+
+# Save model
+MODEL_PATH = "model.json"
+model.save_model(MODEL_PATH)
+print(f"Model saved to {MODEL_PATH}")
